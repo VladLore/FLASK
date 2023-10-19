@@ -1,0 +1,10 @@
+{%extends 'base.html'%}
+{%block content%}
+    {%for i in news%}
+    <div class="card" style="width: 18rem;">
+        <h2>{{i.Heading}}</h2>
+        <p>{{i.Description}}</p>
+        <p>{{i.date_of_publication}}</p>
+    </div>
+    {%endfor%}
+{%endblock%}
