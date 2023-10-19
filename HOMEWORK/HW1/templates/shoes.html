@@ -1,0 +1,19 @@
+{%extends 'base.html'%}
+{%block content%}
+    <table class="table table-hover">
+        <thead>
+            <th>Модель</th>
+            <th>Размер</th>
+            <th>Цвет</th>            
+        </thead>
+        <tbody>
+            {%for i in shoes%}
+            <tr>
+                <td>{{i.model}}</td>
+                <td>{{i.size}}</td>
+                <td>{{i.colors}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+{%endblock%}
