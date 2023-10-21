@@ -5,38 +5,36 @@ app = Flask(__name__)
 
 app.secret_key = "rrgtqeyq43t43t45t4qter"
 
-@app.get('/submit/')
+
+@app.get("/submit/")
 def submit_get():
-    context = {
-        'login': 'Авторизация'
-    }
-    return render_template('form.html', **context)
+    context = {"login": "Авторизация"}
+    return render_template("form.html", **context)
 
 
-@app.post('/submit/')
+@app.post("/submit/")
 def submit_post():
-    session['login'] = request.form.get('login')
-    session['email'] = request.form.get('email')
-    return redirect(url_for('success'))
+    session["login"] = request.form.get("login")
+    session["email"] = request.form.get("email")
+    return redirect(url_for("success"))
 
 
-@app.route('/success/', methods=['GET', 'POST'])
+@app.route("/success/", methods=["GET", "POST"])
 def success():
-    if 'login' in session:
+    if "login" in session:
         context = {
-            'login': session['login'],
-            'email': session['email'],
-            'title': 'Добро пожаловать'
+            "login": session["login"],
+            "email": session["email"],
+            "title": "Добро пожаловать",
         }
-        if request.method == 'POST':
-            session.pop('login', None)
-            session.pop('email', None)
-            return redirect(url_for('submit_get'))
-        return render_template('success.html', **context)
+        if request.method == "POST":
+            session.pop("login", None)
+            session.pop("email", None)
+            return redirect(url_for("submit_get"))
+        return render_template("success.html", **context)
     else:
-        return redirect(url_for('login'))
+        return redirect(url_for("login"))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
-
