@@ -45,3 +45,10 @@ class OrderIn(BaseModel):
     product_id: int
     date: date
     status: bool
+
+class ReadOrder(BaseModel):
+   product_id: int
+   date: date
+   status: bool
+   title: str
+   price: int
